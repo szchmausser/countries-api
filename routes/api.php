@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/countries', [CountryController::class, 'index']);
+Route::post('/countries', [CountryController::class, 'store']);
+Route::get('/countries/{country}', [CountryController::class, 'show']);
+Route::patch('/countries/{country}', [CountryController::class, 'update']);
+Route::delete('/countries/{country}', [CountryController::class, 'destroy']);
+
+Route::post('/states', [StateController::class, 'store']);
+Route::get('/states/{state}', [StateController::class, 'show']);
+Route::patch('/states/{state}', [StateController::class, 'update']);
+Route::delete('/states/{state}', [StateController::class, 'destroy']);
+Route::get('/list-states-by-country/{country}', [StateController::class, 'listStatesByCountry']);
+
+Route::post('/cities', [CityController::class, 'store']);
+Route::get('/cities/{city}', [CityController::class, 'show']);
+Route::patch('/cities/{city}', [CityController::class, 'update']);
+Route::delete('/cities/{city}', [CityController::class, 'destroy']);
+Route::get('/list-cities-by-state/{state}', [CityController::class, 'listCitiesByState']);
