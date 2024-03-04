@@ -44,4 +44,11 @@ class CityController extends Controller
 
         return response()->json($cities, Response::HTTP_OK);
     }
+
+    public function listCitiesByStateSelect(State $state)
+    {
+        $cities = $state->cities()->get(['id', 'name']);
+
+        return response()->json($cities, Response::HTTP_OK);
+    }
 }

@@ -44,4 +44,11 @@ class StateController extends Controller
 
         return response()->json($states, Response::HTTP_OK);
     }
+
+    public function listStatesByCountrySelect(Country $country)
+    {
+        $states = $country->states()->get(['id', 'name']);
+
+        return response()->json($states, Response::HTTP_OK);
+    }
 }

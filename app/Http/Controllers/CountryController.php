@@ -16,6 +16,13 @@ class CountryController extends Controller
         return response()->json($countries, Response::HTTP_OK);
     }
 
+    public function countriesSelect()
+    {
+        $countries = Country::all()->select('id', 'name');
+
+        return response()->json($countries, Response::HTTP_OK);
+    }
+
     public function store(StoreCountryRequest $request)
     {
         $country = new Country();
