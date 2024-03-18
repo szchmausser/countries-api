@@ -22,6 +22,7 @@ Route::get('/countries/{country}', [CountryController::class, 'show']);
 Route::patch('/countries/{country}', [CountryController::class, 'update']);
 Route::delete('/countries/{country}', [CountryController::class, 'destroy']);
 Route::get('/countries-select', [CountryController::class, 'countriesSelect']);
+Route::get('/countries-all-data', [CountryController::class, 'allData']);
 
 Route::post('/states', [StateController::class, 'store']);
 Route::get('/states/{state}', [StateController::class, 'show']);
