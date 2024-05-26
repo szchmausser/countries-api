@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      target: web
+      context: .
+    env_file:
+      - .env
+    ports:
+      - "8103:80"
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+
+networks:
+  default:
+    external: true
+    name: wewewe-lan
